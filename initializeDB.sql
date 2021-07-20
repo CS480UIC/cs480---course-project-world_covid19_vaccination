@@ -35,8 +35,8 @@ CREATE TABLE country_vaccine_relationship(
 country_name              VARCHAR(30) NOT NULL, 
 vaccine_name              VARCHAR(30) NOT NULL, 
 PRIMARY KEY (country_name, vaccine_name), 
-FOREIGN KEY (country_name) REFERENCES country(country_name),
-FOREIGN KEY (vaccine_name) REFERENCES vaccine(name)
+FOREIGN KEY (country_name) REFERENCES country(country_name) ON DELETE CASCADE,
+FOREIGN KEY (vaccine_name) REFERENCES vaccine(name) ON DELETE CASCADE
 );
 INSERT INTO country_vaccine_relationship (country_name, vaccine_name)
 VALUES ('United States', 'Phizer');
@@ -51,7 +51,7 @@ state_name   		     VARCHAR(30) NOT NULL,
 country_name      		 VARCHAR(30) NOT NULL, 
 population    		 	 INT UNSIGNED NOT NULL, 
 PRIMARY KEY (state_name),
-FOREIGN KEY (country_name) REFERENCES country(country_name)
+FOREIGN KEY (country_name) REFERENCES country(country_name) ON DELETE CASCADE
 );
 INSERT INTO state (state_name, country_name, population)
 VALUES ('Illinois', 'United States', 12775352);
@@ -67,7 +67,7 @@ state_name      			 VARCHAR(30) NOT NULL,
 city					 	 VARCHAR(30) NOT NULL,  
 vaccinated_people		 	 INT UNSIGNED NOT NULL, 
 PRIMARY KEY (hospital_name),
-FOREIGN KEY (state_name) REFERENCES state(state_name)
+FOREIGN KEY (state_name) REFERENCES state(state_name) ON DELETE CASCADE
 );
 INSERT INTO hospital (hospital_name, state_name, city, vaccinated_people)
 VALUES ('UIHealth', 'Illinois', 'Chicago', 18189);
@@ -85,7 +85,7 @@ name			 		 VARCHAR(30) NOT NULL,
 age   		     		 TINYINT UNSIGNED NOT NULL,
 date_of_birth    		 Date NOT NULL,
 PRIMARY KEY (number),
-FOREIGN KEY (hospital_name) REFERENCES hospital(hospital_name)
+FOREIGN KEY (hospital_name) REFERENCES hospital(hospital_name) ON DELETE CASCADE
 );
 INSERT INTO people (hospital_name, ID, name, age, date_of_birth)
 VALUES ('UIHealth', 677447670, 'Jiangni Ren', 21, '2000-01-04');
