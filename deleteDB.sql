@@ -1,11 +1,11 @@
 USE world_covid19_vaccination;
 
-DROP TABLE country;
-DROP TABLE vaccine;
-DROP TABLE country_vaccine_relationship;
-DROP TABLE state;
-DROP TABLE hospital;
 DROP TABLE people;
+DROP TABLE hospital;
+DROP TABLE state;
+DROP TABLE country_vaccine_relationship;
+DROP TABLE vaccine;
+DROP TABLE country;
 DROP TABLE tb_user;
 
 
